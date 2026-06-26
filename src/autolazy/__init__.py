@@ -162,8 +162,8 @@ def parse_all(path: Path) -> list[str]:
 def lazy_attach(
     package_name: str,
     init_file_path: str,
-    submodules: list[str] = [],
-    submod_attrs: list[str] = [],
+    submodules: list[str] | None = None,
+    submod_attrs: list[str] | None = None,
 ) -> tuple[Callable[[str], ModuleType | Any], Callable[[], list[str]], list[str]]:
     """Create lazy imports for a package.
 
@@ -198,7 +198,7 @@ def lazy_attach(
         ... )
     """
     pkg_dir = Path(init_file_path).parent
-    submodules_scanned = submodules
+    submodules_scanned = list(submodules) if submodules is not None else []
     submod_attrs_scanned = dict[str, list[str]]()
 
     def _get_all(directory: Path, submod_name: str) -> list[str]:
@@ -216,7 +216,7 @@ def lazy_attach(
 
         return parse_all(submod_file)
 
-    for submod_name in submod_attrs:
+    for submod_name in (submod_attrs or []):
         public_modules = _get_all(pkg_dir, submod_name)
         if public_modules:
             submod_attrs_scanned[submod_name] = public_modules

@@ -1,6 +1,6 @@
 [project]
 name = "autolazy"
-version = "1.0.1"
+version = "1.0.2"
 description = "Utilities for building lazily imported Python packages"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -19,7 +19,7 @@ classifiers = [
 ]
 requires-python = ">=3.12"
 dependencies = [
-    "lazy-loader>=0.4",
+    "lazy-loader>=0.4,<1",
 ]
 
 [project.urls]
