@@ -1,0 +1,42 @@
+[project]
+name = "autolazy"
+version = "1.0.1"
+description = "Utilities for building lazily imported Python packages"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Nekch0", email = "ptdmc.akdmc@gmail.com" }
+]
+keywords = ["lazy", "import", "lazy-loader", "package"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+requires-python = ">=3.12"
+dependencies = [
+    "lazy-loader>=0.4",
+]
+
+[project.urls]
+Homepage = "https://github.com/Nekch0/autolazy"
+Repository = "https://github.com/Nekch0/autolazy"
+"Bug Tracker" = "https://github.com/Nekch0/autolazy/issues"
+Changelog = "https://github.com/Nekch0/autolazy/blob/main/CHANGELOG.md"
+
+[build-system]
+requires = ["uv_build>=0.11.21,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.0",
+    "pytest-cov>=7.1.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
